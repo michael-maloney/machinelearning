@@ -33,10 +33,10 @@ x_test /= 255
 keras.preprocessing.image.ImageDataGenerator(featurewise_center=False, samplewise_center=True, featurewise_std_normalization=True, samplewise_std_normalization=True, zca_whitening=True, zca_epsilon=1e-06, rotation_range=0, width_shift_range=0.0, height_shift_range=0.0, brightness_range=None, shear_range=0.0, zoom_range=0.0, channel_shift_range=0.0, fill_mode='nearest', cval=0.1, horizontal_flip=True, vertical_flip=False, rescale=None, preprocessing_function=None, data_format=None, validation_split=0.5, dtype=None)
 model = Sequential()
 model.add(Conv2D(32, (3, 3), padding='same', input_shape=x_train.shape[1:]))
-model.add(Activation('leakyrelu'))
+model.add(Activation('tanh'))
 
 model.add(Conv2D(32, (3, 3)))
-model.add(Activation('leakyrelu'))
+model.add(Activation('relu'))
 
 model.add(MaxPooling2D(pool_size=(2, 2)))
 model.add(Dropout(0.25))
