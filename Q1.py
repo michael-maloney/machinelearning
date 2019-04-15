@@ -61,6 +61,7 @@ model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accur
 Please use Keras ImageDataGenerator to perfrom image data augumentation.
 Hint: You can use (https://keras.io/preprocessing/image/#imagedatagenerator)
 '''
+keras.preprocessing.image.ImageDataGenerator(featurewise_center=False, samplewise_center=False, featurewise_std_normalization=True, samplewise_std_normalization=True, zca_whitening=True, zca_epsilon=1e-06, rotation_range=0, width_shift_range=0.0, height_shift_range=0.0, brightness_range=None, shear_range=0.0, zoom_range=0.0, channel_shift_range=0.0, fill_mode='nearest', cval=0.0, horizontal_flip=False, vertical_flip=False, rescale=None, preprocessing_function=None, data_format=None, validation_split=0.0, dtype=None)
 
 history = model.fit(x_train, y_train, batch_size=batch_size, epochs=epochs, validation_data=(x_test, y_test), shuffle=True)
 
