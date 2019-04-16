@@ -10,8 +10,8 @@ from keras.layers import Dense, Dropout, Activation, Flatten
 from keras.layers import Conv2D, MaxPooling2D
 import pandas
 
-batch_size = 128
-num_classes = 15
+batch_size = 256
+num_classes = 10
 epochs = 50
 
 (x_train, y_train), (x_test, y_test) = cifar10.load_data()
@@ -48,6 +48,11 @@ model.add(Conv2D(64, (3, 3)))
 model.add(Activation('relu'))
 
 model.add(Conv2D(64, (3, 3)))
+model.add(BatchNormalization())
+model.add(Activation('relu'))
+
+model.add(Conv2D(64, (3, 3)))
+model.add(BatchNormalization())
 model.add(Activation('relu'))
 
 model.add(MaxPooling2D(pool_size=(2, 2)))
