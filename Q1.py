@@ -40,7 +40,7 @@ model.add(Conv2D(32, (3, 3)))
 model.add(Activation('relu'))
 
 model.add(MaxPooling2D(pool_size=(2, 2)))
-model.add(Dropout(0.25))
+model.add(Dropout(0.35))
 
 model.add(Conv2D(64, (3, 3), padding='same'))
 model.add(Activation('relu'))
@@ -57,7 +57,7 @@ model.add(BatchNormalization())
 model.add(Activation('relu'))
 
 model.add(MaxPooling2D(pool_size=(2, 2)))
-model.add(Dropout(0.25))
+model.add(Dropout(0.45))
 
 model.add(Flatten())
 
