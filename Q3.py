@@ -50,7 +50,7 @@ output = keras.layers.concatenate([volume_1, volume_2, volume_3,
 
 
 # Create Volumes for the Inception module
-volume_a = Conv2D(32, (1,1), padding='same', activation='relu', kernel_regularizer=regularizers.l2(0.02))(output)
+volume_a = Conv2D(32, (1,1), padding='same', activation='relu', kernel_regularizer=regularizers.l2(0.04))(output)
 
 
 volume_b = Conv2D(32, (1,1), padding='same', activation='relu')(output)
@@ -60,7 +60,7 @@ volume_c = Conv2D(18, (1,1), padding='same', activation='relu')(output)
 volume_c = Conv2D(32, (5,5), padding='same', activation='relu', kernel_regularizer=regularizers.l2(0.05))(volume_c)
 
 volume_d = MaxPooling2D((3,3), strides=(1,1), padding='same')(output)
-volume_d = Conv2D(32, (2,2), padding='same', activation='relu', kernel_regularizer=regularizers.l1(0.02))(volume_d)
+volume_d = Conv2D(32, (2,2), padding='same', activation='relu', kernel_regularizer=regularizers.l1(0.04))(volume_d)
 
 
 # Concatenate all volumes of the Inception module
