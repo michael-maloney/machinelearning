@@ -40,7 +40,7 @@ volume_3 = Conv2D(16, (1,1), padding='same', activation='relu')(input_img)
 volume_3 = Conv2D(64, (3,3), padding='same', activation='relu')(volume_3)
 
 volume_4 = MaxPooling2D((3,3), strides=(1,1), padding='same')(input_img)
-volume_4 = Conv2D(32, (2,2), padding='same', activation='relu')(volume_4)
+volume_4 = Conv2D(32, (2,2), padding='same', activation='relu', kernel_regularizer=regularizers.l1(0.05))(volume_4)
 
 
 
@@ -51,6 +51,8 @@ output = keras.layers.concatenate([volume_1, volume_2, volume_3,
 
 # Create Volumes for the Inception module
 volume_a = Conv2D(64, (1,1), padding='same', activation='relu')(output)
+
+volume_z = Conv2D(128, (1,1), padding='same', activation='relu')(input_img)
 
 volume_b = Conv2D(96, (1,1), padding='same', activation='relu')(output)
 volume_b = Conv2D(128, (3,3), padding='same', activation='relu', kernel_regularizer=regularizers.l1(0.05))(volume_b)
@@ -64,7 +66,7 @@ volume_d = Conv2D(32, (2,2), padding='same', activation='relu')(volume_d)
 
 # Concatenate all volumes of the Inception module
 inception_module = keras.layers.concatenate([volume_a, volume_b, volume_c,
-                                             volume_d], axis = 3)
+                                             volume_d, volume_z], axis = 3)
 
 output2 = Flatten()(inception_module)
 
