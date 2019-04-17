@@ -33,14 +33,14 @@ input_img = Input(shape = (32, 32, 3))
 volume_1 = Conv2D(64, (1,1), padding='same', activation='relu')(input_img)
 
 volume_2 = Conv2D(96, (1,1), padding='same', activation='relu')(input_img)
-volume_2 = Conv2D(128, (3,3), padding='same', activation='relu')(volume_2)
+volume_2 = Conv2D(128, (3,3), padding='same', activation='relu'kernel_regularizer=regularizers.l2(0.05)(volume_2)
 
 volume_3 = Conv2D(16, (1,1), padding='same', activation='relu')(input_img)
-volume_3 = Conv2D(32, (5,5), padding='same', activation='relu')(volume_3)
-model.add(Conv2D(32, (5,5), kernel_regularizer=l2(0.01), bias_regularizer=l2(0.01)))
+volume_3 = Conv2D(32, (5,5), padding='same', activation='relu',kernel_regularizer=regularizers.l2(0.05)(volume_3)
 
 volume_4 = MaxPooling2D((3,3), strides=(1,1), padding='same')(input_img)
-volume_4 = Conv2D(32, (1,1), padding='same', activation='relu')(volume_4)
+volume_4 = Conv2D(32, (1,1), padding='same', activation='relu', kernel_regularizer=regularizers.l2(0.05))(volume_4)
+
 
 # Concatenate all volumes of the Inception module
 inception_module = keras.layers.concatenate([volume_1, volume_2, volume_3,
@@ -52,7 +52,11 @@ out    = Dense(10, activation='softmax')(output)
 model = Model(inputs = input_img, outputs = out)
 print(model.summary())
 
-model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
+lrate = 0.01
+decay = lrate/epochs
+sgd = SGD(lr=lrate, momentum=0.9, decay=decay, nesterov=False)
+
+model.compile(loss='categorical_crossentropy', optimizer=sgd, metrics=['accuracy'])
 hist = model.fit(X_train, y_train, validation_data=(X_test, y_test), epochs=epochs, batch_size=512)
 
 
