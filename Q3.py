@@ -33,7 +33,7 @@ input_img = Input(shape = (32, 32, 3))
 # Create Volumes for the Inception module
 volume_1 = Conv2D(20, (1,1), padding='same', activation='relu')(input_img)
 
-volume_2 = Conv2D(20, (2,2), padding='same', activation='relu')(input_img)
+volume_2 = Conv2D(16, (2,2), padding='same', activation='relu')(input_img)
 volume_2 = Conv2D(32, (4,4), padding='same', activation='relu')(volume_2)
 
 volume_3 = Conv2D(16, (1,1), padding='same', activation='relu')(input_img)
@@ -53,8 +53,8 @@ output = keras.layers.concatenate([volume_1, volume_2, volume_3,
 volume_a = Conv2D(32, (1,1), padding='same', activation='relu', kernel_regularizer=regularizers.l2(0.08))(output)
 
 
-volume_b = Conv2D(32, (1,1), padding='same', activation='relu')(output)
-volume_b = Conv2D(48, (3,3), padding='same', activation='relu', kernel_regularizer=regularizers.l2(0.08))(volume_b)
+volume_b = Conv2D(16, (1,1), padding='same', activation='relu')(output)
+volume_b = Conv2D(30, (3,3), padding='same', activation='relu', kernel_regularizer=regularizers.l2(0.08))(volume_b)
 
 volume_c = Conv2D(18, (1,1), padding='same', activation='relu')(output)
 volume_c = Conv2D(32, (5,5), padding='same', activation='relu', kernel_regularizer=regularizers.l2(0.08))(volume_c)
