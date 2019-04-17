@@ -31,13 +31,13 @@ input_img = Input(shape = (32, 32, 3))
 
 
 # Create Volumes for the Inception module
-volume_1 = Conv2D(64, (1,1), padding='same', activation='relu',kernel_regularizer=regularizers.l1(0.03))(input_img)
+volume_1 = Conv2D(64, (1,1), padding='same', activation='relu',kernel_regularizer=regularizers.l1(0.05))(input_img)
 
 volume_2 = Conv2D(96, (1,1), padding='same', activation='relu')(input_img)
-volume_2 = Conv2D(128, (3,3), padding='same', activation='relu', kernel_regularizer=regularizers.l2(0.03))(volume_2)
+volume_2 = Conv2D(128, (3,3), padding='same', activation='relu', kernel_regularizer=regularizers.l2(0.05))(volume_2)
 
 volume_3 = Conv2D(16, (1,1), padding='same', activation='relu')(input_img)
-volume_3 = Conv2D(32, (5,5), padding='same', activation='relu', kernel_regularizer=regularizers.l1(0.03))(volume_3)
+volume_3 = Conv2D(32, (5,5), padding='same', activation='relu', kernel_regularizer=regularizers.l1(0.05))(volume_3)
 
 volume_4 = MaxPooling2D((3,3), strides=(1,1), padding='same')(input_img)
 volume_4 = Conv2D(32, (2,2), padding='same', activation='relu')(volume_4)
@@ -50,16 +50,16 @@ output = keras.layers.concatenate([volume_1, volume_2, volume_3,
 
 
 # Create Volumes for the Inception module
-volume_a = Conv2D(64, (1,1), padding='same', activation='relu',kernel_regularizer=regularizers.l1(0.03))(output)
+volume_a = Conv2D(64, (1,1), padding='same', activation='relu',kernel_regularizer=regularizers.l1(0.06))(output)
 
 volume_b = Conv2D(96, (1,1), padding='same', activation='relu')(output)
-volume_b = Conv2D(128, (3,3), padding='same', activation='relu', kernel_regularizer=regularizers.l2(0.03))(volume_b)
+volume_b = Conv2D(128, (3,3), padding='same', activation='relu', kernel_regularizer=regularizers.l2(0.06))(volume_b)
 
 volume_c = Conv2D(16, (1,1), padding='same', activation='relu')(output)
-volume_c = Conv2D(32, (5,5), padding='same', activation='relu', kernel_regularizer=regularizers.l1(0.03))(volume_c)
+volume_c = Conv2D(32, (5,5), padding='same', activation='relu', kernel_regularizer=regularizers.l1(0.06))(volume_c)
 
 volume_d = MaxPooling2D((3,3), strides=(1,1), padding='same')(output)
-volume_d = Conv2D(32, (2,2), padding='same', activation='relu')(volume_d)
+volume_d = Conv2D(32, (2,2), padding='same', activation='relu', kernel_regularizer=regularizers.l1(0.06))(volume_d)
 
 
 # Concatenate all volumes of the Inception module
