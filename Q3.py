@@ -12,7 +12,7 @@ from keras.layers import Input
 from keras.utils import np_utils
 from keras.datasets import cifar10
 
-epochs = 30
+epochs = 50
 
 # Get the data
 (X_train, y_train), (X_test, y_test) = cifar10.load_data()
@@ -54,10 +54,10 @@ volume_a = Conv2D(32, (1,1), padding='same', activation='relu', kernel_regulariz
 
 
 volume_b = Conv2D(16, (1,1), padding='same', activation='relu')(output)
-volume_b = Conv2D(30, (3,3), padding='same', activation='relu', kernel_regularizer=regularizers.l2(0.08))(volume_b)
+volume_b = Conv2D(20, (3,3), padding='same', activation='relu', kernel_regularizer=regularizers.l2(0.08))(volume_b)
 
 volume_c = Conv2D(18, (1,1), padding='same', activation='relu')(output)
-volume_c = Conv2D(32, (5,5), padding='same', activation='relu', kernel_regularizer=regularizers.l2(0.08))(volume_c)
+volume_c = Conv2D(20, (5,5), padding='same', activation='relu', kernel_regularizer=regularizers.l2(0.08))(volume_c)
 
 volume_d = MaxPooling2D((3,3), strides=(1,1), padding='same')(output)
 volume_d = Conv2D(32, (2,2), padding='same', activation='relu', kernel_regularizer=regularizers.l2(0.08))(volume_d)
