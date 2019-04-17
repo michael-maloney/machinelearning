@@ -38,11 +38,9 @@ volume_2 = Conv2D(128, (3,3), padding='same', activation='relu', kernel_regulari
 
 volume_3 = Conv2D(16, (1,1), padding='same', activation='relu')(input_img)
 volume_3 = Conv2D(32, (5,5), padding='same', activation='relu')(volume_3)
-volume_3 = Conv2D(32, (3,3), padding='same', activation='relu', kernel_regularizer=regularizers.l2(0.05))(volume_3)
 
 volume_4 = MaxPooling2D((3,3), strides=(1,1), padding='same')(input_img)
 volume_4 = Conv2D(32, (2,2), padding='same', activation='relu')(volume_4)
-volume_4 = Conv2D(32, (1,1), padding='same', activation='relu')(volume_4)
 
 
 
@@ -57,7 +55,7 @@ model = Model(inputs = input_img, outputs = out)
 print(model.summary())
 
 
-model.compile(loss='categorical_crossentropy', optimizer='sgd', metrics=['accuracy'])
+model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 hist = model.fit(X_train, y_train, validation_data=(X_test, y_test), epochs=epochs, batch_size=512)
 
 
