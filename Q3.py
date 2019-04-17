@@ -59,7 +59,7 @@ volume_b = Conv2D(128, (3,3), padding='same', activation='relu', kernel_regulari
 volume_c = Conv2D(16, (1,1), padding='same', activation='relu', kernel_regularizer=regularizers.l1(0.05))(output)
 volume_c = Conv2D(32, (5,5), padding='same', activation='relu', kernel_regularizer=regularizers.l1(0.05))(volume_c)
 
-volume_d = MaxPooling2D((3,3), strides=(1,1), padding='same', kernel_regularizer=regularizers.l1(0.05))(output)
+volume_d = MaxPooling2D((3,3), strides=(1,1), padding='same')(output)
 volume_d = Conv2D(32, (2,2), padding='same', activation='relu')(volume_d)
 
 
