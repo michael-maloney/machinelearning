@@ -34,10 +34,10 @@ input_img = Input(shape = (32, 32, 3))
 volume_1 = Conv2D(64, (1,1), padding='same', activation='relu')(input_img)
 
 volume_2 = Conv2D(32, (2,2), padding='same', activation='relu')(input_img)
-volume_2 = Conv2D(64, (4,4), padding='same', activation='relu', kernel_regularizer=regularizers.l1(0.07))(volume_2)
+volume_2 = Conv2D(64, (4,4), padding='same', activation='relu')(volume_2)
 
 volume_3 = Conv2D(32, (1,1), padding='same', activation='relu')(input_img)
-volume_3 = Conv2D(64, (3,3), padding='same', activation='relu',kernel_regularizer=regularizers.l1(0.05))(volume_3)
+volume_3 = Conv2D(64, (3,3), padding='same', activation='relu')(volume_3)
 
 volume_4 = MaxPooling2D((3,3), strides=(1,1), padding='same')(input_img)
 volume_4 = Conv2D(32, (2,2), padding='same', activation='relu', kernel_regularizer=regularizers.l1(0.05))(volume_4)
