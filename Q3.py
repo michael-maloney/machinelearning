@@ -53,11 +53,8 @@ out    = Dense(10, activation='softmax')(output)
 model = Model(inputs = input_img, outputs = out)
 print(model.summary())
 
-lrate = 0.01
-decay = lrate/epochs
-sgd = SGD(lr=lrate, momentum=0.9, decay=decay, nesterov=False)
 
-model.compile(loss='categorical_crossentropy', optimizer=sgd, metrics=['accuracy'])
+model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 hist = model.fit(X_train, y_train, validation_data=(X_test, y_test), epochs=epochs, batch_size=512)
 
 
