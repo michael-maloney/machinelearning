@@ -60,7 +60,7 @@ volume_c = Conv2D(18, (1,1), padding='same', activation='relu')(output)
 volume_c = Conv2D(32, (5,5), padding='same', activation='relu', kernel_regularizer=regularizers.l2(0.08))(volume_c)
 
 volume_d = MaxPooling2D((3,3), strides=(1,1), padding='same')(output)
-volume_d = Conv2D(32, (2,2), padding='same', activation='relu', kernel_regularizer=regularizers.l1(0.08))(volume_d)
+volume_d = Conv2D(32, (2,2), padding='same', activation='relu', kernel_regularizer=regularizers.l2(0.08))(volume_d)
 
 
 # Concatenate all volumes of the Inception module
