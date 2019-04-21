@@ -22,7 +22,7 @@ mapping = load(open('LargeLSTM_mapping.pkl', 'rb'))
 # Make predictions
 for k in range(n_chars_to_predict):
     # encode the characters as integers
-    encoded = [mapping[char] for char in seed_text]
+    encoded = [mapping[string] for string in seed_text]
     # truncate sequences to a fixed length
     encoded = pad_sequences([encoded], maxlen=seq_length, truncating='pre')
     # one hot encode
@@ -31,9 +31,9 @@ for k in range(n_chars_to_predict):
     yhat = model.predict_classes(encoded, verbose=0)
     
     # reverse map integer to character
-    for char, index in mapping.items():
+    for string, index in mapping.items():
         if index == yhat:
             break
-    seed_text += char
+    seed_text += string
 
 print(seed_text)
