@@ -16,7 +16,7 @@ seq_length = 500
 
 # load the model and mapping
 model = load_model('LargeLSTM_model.h5')
-mapping = load(open('LargeLSTM_mapping.pkl', 'rb'))
+mapping = load(open('LargeLSTM_mapping.pkl', 'wb'))
 
 
 # Make predictions
@@ -24,7 +24,7 @@ for k in range(n_chars_to_predict):
     # encode the characters as integers
     encoded = [mapping[string] for string in seed_text]
     # truncate sequences to a fixed length
-    encoded = pad_sequences([encoded], maxlen=seq_length, truncating='pre')
+    encoded = pad_sequences([encoded], maxlen=28, truncating='pre')
     # one hot encode
     encoded = to_categorical(encoded, num_classes=len(mapping))
     # predict character
