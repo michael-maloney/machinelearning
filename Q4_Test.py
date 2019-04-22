@@ -1,9 +1,10 @@
 """
 PS#2
-Q4 (Testing) - A Small Character Level LSTM
+Q5 (Testing) - A Large Character Level LSTM
 Loads a trained LSTM and mapping and generates sentences
-
+Implemented from Q4 testing code
 """
+
 import numpy as np
 from pickle import load
 from keras.models import load_model
