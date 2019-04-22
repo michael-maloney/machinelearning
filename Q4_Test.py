@@ -10,7 +10,7 @@ from keras.models import load_model
 from keras.utils import to_categorical
 from keras.preprocessing.sequence import pad_sequences
 
-seed_text = 'you will probably be prepared to admit that you are not exceptional'
+seed_text = 'The new era began; the king was tried, doomed, and beheaded'
 n_chars_to_predict = 500
 seq_length = 100
 
