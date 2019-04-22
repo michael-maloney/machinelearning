@@ -11,7 +11,7 @@ from keras.utils import to_categorical
 from keras.preprocessing.sequence import pad_sequences
 
 seed_text = 'you will probably be prepared to admit that you are not exceptional'
-n_chars_to_predict = 200
+n_chars_to_predict = 500
 seq_length = 100
 
 # load the model and mapping
@@ -26,7 +26,9 @@ for k in range(n_chars_to_predict):
     # truncate sequences to a fixed length
     encoded = pad_sequences([encoded], maxlen=seq_length, truncating='pre')
     # one hot encode
-    encoded = to_categorical(encoded, num_classes=len(mapping))
+    encoded = encoded/float(len(mapping))
+    encoded = np.reshape(encoded, (encoded.shape[0], seq_length, 1)))
+    # encoded = to_categorical(encoded, num_classes=len(mapping))
     # predict character
     yhat = model.predict_classes(encoded, verbose=0)
     
