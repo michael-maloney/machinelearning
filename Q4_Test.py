@@ -26,7 +26,7 @@ for k in range(n_chars_to_predict):
     # truncate sequences to a fixed length
     encoded = pad_sequences([encoded], maxlen=seq_length, truncating='pre')
     # one hot encode
-    encoded = encoded/len(mapping)
+    encoded = encoded/float(len(mapping))
     encoded = np.reshape(encoded, (encoded.shape[0], seq_length, 1))
 
     
