@@ -28,7 +28,7 @@ for k in range(n_chars_to_predict):
     # one hot encode
     encoded = encoded/len(mapping)
     encoded = np.reshape(encoded, (encoded.shape[0], seq_length, 1))
-    print("mapping", mapping, "encoded", encoded)
+
     
     # encoded = to_categorical(encoded, num_classes=len(mapping))
     # predict character
