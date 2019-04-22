@@ -4,7 +4,7 @@ Q4 (Testing) - A Small Character Level LSTM
 Loads a trained LSTM and mapping and generates sentences
 
 """
-
+import numpy as np
 from pickle import load
 from keras.models import load_model
 from keras.utils import to_categorical
