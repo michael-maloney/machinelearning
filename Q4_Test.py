@@ -15,8 +15,8 @@ n_chars_to_predict = 500
 seq_length = 100
 
 # load the model and mapping
-model = load_model('LargeLSTM_model_512_4096_50.h5')
-mapping = load(open('LargeLSTM1_mapping.pkl', 'rb'))
+model = load_model('LargeLSTM_model.h5')
+mapping = load(open('LargeLSTM_mapping.pkl', 'rb'))
 
 
 # Make predictions
@@ -28,6 +28,8 @@ for k in range(n_chars_to_predict):
     # one hot encode
     encoded = encoded/float(len(mapping))
     encoded = np.reshape(encoded, (encoded.shape[0], seq_length, 1))
+    print("mapping", mapping, "encoded", encoded)
+    
     # encoded = to_categorical(encoded, num_classes=len(mapping))
     # predict character
     yhat = model.predict_classes(encoded, verbose=0)
